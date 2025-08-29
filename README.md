@@ -65,6 +65,7 @@ Le projet est organisé de la manière suivante :
      - `NUM_OF_LANES` : le nombre de voies (incluant 3 pelouses, 4 voies de routes et 4 voies de rivière), qui est égal à 11.
      - `LANE_HEIGHT` : la hauteur d'une voie, qui est calculée par `SCREEN_HEIGHT / NUM_OF_LANES`
      - `FROG_SIZE` : la taille de l'image de la grenouille
+     - `LANES` : Liste des voies, qui va contenir un dictionnaire contenant des informations pour chaque voie (ex: la position en y, la vitesse des voitures ou des bûches, etc.)
      - `CAR_COLORS` : la liste des couleurs possibles pour les voitures
      - `CARS_SIZE` : la taille pour les images des voitures
      - `LOG_SIZES` : les tailles possibles pour l'image des bûches de bois ("small", "medium" et "long")
@@ -180,7 +181,7 @@ Dans cette section, vous allez créer les voies de circulation (les "lanes") con
 
 Pour ce faire, vous allez compléter la section `#TODO` à l'intérieur du fichier `window.py`.  
 
-L'objectif est d'ajouter les dictionnaires représentant des voies de type "car" dans la liste "lanes". Chaque voie devra contenir des voitures qui :
+L'objectif est d'ajouter les dictionnaires représentant des voies de type "car" dans la liste `LANES`. Chaque voie devra contenir des voitures qui :
 - apparaissent à une position de départ différente
 - avancent dans une direction précise (droite ou gauche)
 - se déplacent à une vitesse choisie aléatoirement parmi [2, 3, 4]. 
@@ -216,10 +217,10 @@ où :
 
      - Ensuite, vous devez ajouter ce dictionnaire à la liste `cars`.
        
-- Une fois que les trois voitures ont été ajoutées à la liste `cars`, ajoutez le dictionnaire suivant à la liste `lanes` :
+- Une fois que les trois voitures ont été ajoutées à la liste `cars`, ajoutez le dictionnaire suivant à la liste `LANES` :
 
 ```
-    lanes.append({
+    LANES.append({
         "type":
         "speed": 
         "y":
@@ -239,7 +240,7 @@ Vous allez maintenant implémenter une fonction de détection de collisions entr
 
 Pour cette partie, vous devez compléter la fonction `check_collision()` dans le fichier `game.py`. Cette fonction doit :
 - [Créer un rectangle pygame (`pygame.Rect`)](https://www.pygame.org/docs/ref/rect.html) représentant la grenouille.
-- Parcourir toutes les voies de type `car` dans la liste lanes.
+- Parcourir toutes les voies de type `car` dans la liste `LANES`.
 - Vérifier s'il s'agit d'une voie de type `road`
 - Pour chaque voiture dans la voie :
      - Créer un rectangle pygame (`pygame.Rect`) basé sur l'image et la position de la voiture.
@@ -291,9 +292,9 @@ log = {
   }
 ```
 - Par la suite, chaque dictionnaire `log` doit être ajouté à une liste `logs`.
-- Ajoutez la liste `logs` à `lanes`, avec :
+- Ajoutez la liste `logs` à `LANES`, avec :
 ```
-    lanes.append({
+    LANES.append({
         "type":
         "speed": 
         "y":
