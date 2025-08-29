@@ -329,7 +329,7 @@ Si aucune bûche n’est en contact avec la grenouille :
 
 # Directives pour la remise 
 
-Pour remettre votre travail, vous devez créez un fichier zip nommé XXXXX_YYYYY-PR01.zip, où XXXXX est votre nom de famille et YYYYY, votre prénom. Ce fichier zip devra contenir le dossier `A2025-PR01` avec l'ensemble des fichiers du projet.
+Pour remettre votre travail, vous devez créez un fichier zip nommé XXXXX_YYYYY-PR01.zip, où XXXXX est votre nom de famille et YYYYY, votre prénom. Ce fichier zip devra contenir le dossier `2025A-PR01` avec l'ensemble des fichiers du projet.
 
 Votre fichier zip est à remettre dans la boîte de remise sur Moodle prévue à cet effet, le 19 octobre avant minuit. 
 
