@@ -331,7 +331,7 @@ Si aucune bûche n’est en contact avec la grenouille :
 
 Pour remettre votre travail, vous devez créez un fichier zip nommé XXXXX_YYYYY-PR01.zip, où XXXXX est votre nom de famille et YYYYY, votre prénom. Ce fichier zip devra contenir tous les fichiers .py du projet (`config.py`, `game.py`, `main.py` et `menus.py`). 
 
-Votre fichier zip est à remettre dans la boîte de remise sur Moodle prévue à cet effet, le **DATE_REMISE** avant minuit. 
+Votre fichier zip est à remettre dans la boîte de remise sur Moodle prévue à cet effet, le 19 octobre avant minuit. 
 
 # Barème de correction 
 
