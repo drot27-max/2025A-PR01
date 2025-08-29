@@ -267,6 +267,7 @@ L'objectif de cette partie est de charger l'image de la bûche (située dans le 
 - Chaque valeur est l’image chargée et redimensionnée selon les clés `short`,  `medium` et  `long` du dictionnaire `LOG_SIZES`. 
 
 **Étapes à suivre:**
+Dans le fichier `wood_logs.py` : 
 - Créez un dictionnaire nommé `logs_dict` avec les trois clés : "short", "medium", "long"
 - Utilisez `pygame.image.load()` pour charger l'image de bûche à partir du dossier `images/`, **trois fois**, c'est-à-dire une fois pour chaque taille. 
 - Redimensionnez chaque image en utilisant les clés du dictionnaire `LOG_SIZES`.
@@ -276,6 +277,7 @@ L'objectif de cette partie est de charger l'image de la bûche (située dans le 
 Ici, vous allez ajouter les bûches de bois dans la fenêtre du jeu, dans les voies représentant la rivière.
 
 **Conditions à respecter**
+Dans le fichier `window.py`:
 - Générer 4 voies de rivière, contenant chacune des bûches de bois qui se déplacent à des vitesses et directions variables.
 - Comme les voitures, la vitesse des bûches doit être aléatoire entre [2, 3, 4].
 - Alterner les directions de déplacement selon l’indice de la voie (pair → droite, impair → gauche), comme pour les voitures.
@@ -308,28 +310,22 @@ où :
 - `y` est la position en y de la **voie**, définie dans la **première boucle**.
 - `entities` est égale à votre liste `logs`. 
 
-**Étapes à suivre:**
-- Pour chaque voie de rivière :
-     - Déterminez la position verticale (`y`) de la voie à l’aide de la hauteur de l’écran (`SCREEN_HEIGHT`) et de `LANE_HEIGHT`.
-     - Attribuez une vitesse aléatoire parmi [2, 3, 4].
-     - Déterminez la direction selon l’indice (+ pour droite, - pour gauche).
-- Ajoutez 3 bûches par voie, de taille aléatoire parmi "short", "medium" ou "long", choisies à partir du dictionnaire `logs_dict`.
-- Assurez-vous que la bonne image est utilisée, et que chaque bûche est ajoutée avec les bonnes coordonnées x, y et sa largeur (`width`).
-
 ### 3.3 : Gestion du contact entre la grenouille et les bûches
 
 Maintenant, vous allez implémenter la logique de détection du contact entre la grenouille et les bûches de bois. 
 
-À vous de vous baser sur les étapes de la partie 3.3 (détection de collision avec les voitures) pour adapter la logique à cette nouvelle section, cette fois avec les bûches.
-L’approche reste similaire : il s’agit d’ajuster les éléments nécessaires pour détecter si la grenouille est bien sur une bûche ou non, et d'ajuster la vitesse de la grenouille en conséquence. 
+Inspirez-vous des étapes de la partie 3.3 (détection de collision avec les voitures) pour adapter la logique à cette nouvelle section, cette fois-ci avec les bûches.
+L’approche est similaire : il s’agit de détecter si la grenouille est en contact avec une bûche et, si c’est le cas, d’ajuster sa vitesse en conséquence.
 
-Pour ce faire, vous devez compléter la fonction `handle_logs()`, qui permettra de détecter si la grenouille se trouve sur une bûche ou non. Si la grenouille est posée sur une bûche, elle doit se déplacer avec elle. 
+Vous devez compléter la fonction handle_logs(), qui permettra de vérifier si la grenouille se trouve sur une bûche.
 
-Lorsque la grenouille est sur une bûche : 
-     - Mettez la valeur de `frog["on_log"]` égale à `True`.
-     - Assignez la vitesse `frog["log_speed"]` à la vitesse de la bûche de bois. 
+Lorsqu’elle est sur une bûche :
+- `frog["on_log"]` doit être égal à `True`.
+- `frog["log_speed"]` doit être égal à la vitesse de la bûche.
 
-- Si aucune bûche n'est en contact avec la grenouille, la variable `frog["log_speed"]` doit être égale à 0.
+Si aucune bûche n’est en contact avec la grenouille :
+- `frog["on_log"]` doit rester ou redevenir `False`.
+- `frog["log_speed"]` doit être égal à 0.
 
 # Directives pour la remise 
 
@@ -343,45 +339,44 @@ Le barème de correction est le suivant :
 
 | **Partie**                                | **Tâche**                                                                 | **Points** |
 |-------------------------------------------|---------------------------------------------------------------------------|------------|
-| **PARTIE 1 : La grenouille 🐸** |                                                                                     | **/3**     |
+| **PARTIE 1 : La grenouille 🐸** |                                                                                     | **/2**     |
 | 1.1 : Définition du dictionnaire `frog_dict`                                                                           |            |
-|                         | La grenouille est positionnée au centre de la première pelouse au début du jeu               |     1      |
+|                         | La grenouille est positionnée au centre de la première pelouse au début du jeu               |    0.5     |
 | 1.2 : Contrôle du mouvement de la grenouille avec les touches du clavier |                                              |          |
 |                         | Mise à jour de la position de la grenouille avec les flèches du clavier                       |    1      |
-|                         | Contrainte pour empêcher la grenouille de sortir de l'écran en limitant ses coordonnées à celle des dimensions de l'écran de jeu      |   1       |
-| **PARTIE 2 : Les voitures 🚗** |                                                                                        | **/10**     |
+|                         | Contrainte pour empêcher la grenouille de sortir de l'écran en limitant ses coordonnées à celle des dimensions de l'écran de jeu      |   0.5   |
+| **PARTIE 2 : Les voitures 🚗** |                                                                                        | **/9**     |
 | 2.1 : Ajout des voitures dans le dictionnaire `cars_dict`        
-|                        | Chargement des images des voitures             |   0.5       |
-|                        | Redimensionnement des images                   |   0.5       |
-|                        | Ajout des images "_right" et "_left" dans les bonnes clés du dictionnaire                |   1       |
+|                        | Chargement des images des voitures             |   0.5      |
+|                        | Redimensionnement des images                   |   0.5      |
+|                        | Ajout des images "_right" et "_left" dans les bonnes clés du dictionnaire                |   0.5     |
 | 2.2 : Ajout des voitures dans le jeu  | 
-|                        | Les voitures ont la bonne position verticale (sont dans les bonnes voies)                                |   1       |
-|                        | Les voitures vont dans la bonne direction (voies paires vers la droite, voies impaires vers la gauche)     |   1       |
+|                        | Les voitures sont dans les quatre voies qui correspondent à la route                               |    1     |
+|                        | Les voitures vont dans la bonne direction (voies paires vers la droite, voies impaires vers la gauche) et les voitures des clés "right" et "left" sont bien utilisées selon la direction de la voie    |   1       |
 |                        | Il y a 3 voitures par voie          |   0.5       |
 |                        | Les voitures sont centrées au milieu de la voie     |   0.5       |
-|                        | Les voitures ont une position en x aléatoire          |   0.5       |
-|                        | La couleur (l'image) des voitures est aléatoire         |   0.5       |
+|                        | Les voitures ont une position en x aléatoire et ne se chevauchent pas          |   0.5       |
+|                        | La couleur des voitures est aléatoire         |   0.5       |
 |                        | Un dictionnaire pour chaque voiture est créé avec les clés demandées et les dictionnaires sont ajoutés à la bonne liste         |   1      |
-|                        | La liste des dictionnaires de voitures est ajoutée à la liste des voies                 |    1     |
+|                        | La liste des dictionnaires de voitures est ajoutée à la liste `LANES`                |    1     |
 | 2.3 : Gestion des collisions entre la grenouille et les voitures  |   
 |                        | Utilisation des rectangles pygame        |    0.5      |
-|                        | Vérification de la collision pour chaque voiture, dans chaque voie de route        |    1.5       |
+|                        | Vérification de la collision pour chaque voiture, dans chaque voie de route et retourne "True" lorsqu'une collision est détectée entre la grenouille et une voiture        |  1    |
 | **Partie 3 : Les bûches de bois 🪵** |                                                                           | **/9**     |
 | 3.1 : Définition du dictionnaire `logs_dict` |  
-|                       | Les trois tailles de bûches ont été ajoutées au dictionnaire et dimensionnées avec LOG_SIZES.       |    1     |                                          
+|                       | Les trois tailles de bûches ont été ajoutées au dictionnaire dans les bonnes clés et dimensionnées avec LOG_SIZES.       |    1     |                        
 | 3.2 : Ajout des bûches de bois dans le jeu  
-|                       |   les bûches de bois ont la bonne position verticale (sont dans les bonnes voies)         |    1     |        
+|                       |   les bûches de bois sont dans les quatre voies qui correspondent à la rivière        |    1     |        
 |                       |   Les bûches vont dans la bonne direction (voies paires vers la droite, voies impaires vers la gauche)        |    0.5     |       
 |                       |   Il y a 3 bûches par voie       |    0.5     |   
 |                       |   Les bûches sont centrées au milieu de la voie       |      0.5     |  
-|                       |   Les bûches ont une position en x aléatoire          |     0.5       |
+|                       |   Les bûches ont une position en x aléatoire et ne se chevauchent pas          |     0.5       |
 |                       |   Les bûches ont des tailles aléatoires               |     0.5       |
 |                       |   Un dictionnaire pour chaque bûche est créé avec les clés demandées et les dictionnaires sont ajoutés à la bonne liste         |   1      |
-|                       |   La liste des dictionnaires de bûches est ajoutée à la liste des voies     |    1    |
+|                       |   La liste des dictionnaires de bûches est ajoutée à la liste `LANES`       |    1    |
 | 3.3 : Gestion du contact entre la grenouille et les bûches          |
-|                       |  Le rectangle pour la grenouille a bien été créé         |    0.5     |                 
-|                       |  Le rectangle pour les bûches a bien été créé         |    0.5     |   
-|                       |  Gestion de la clé "on_log" lorsque la grenouille est posée sur une bûche        |    1    |   
-|                       |  Gestion de la clé "log_speed" lorsque la grenouille est posée sur une bûche       |    1     |   
+|                       |  Utilisation des rectangles pygame        |    0.5      |
+|                       |  Vérification de la collision pour chaque bûche, dans chaque voie de rivière       |  1   |
+|                       |  Gestion des clés "on_log" et "log_speed" lorsqu'une collision est détectée entre la grenouille et une bûche        |    1    |   
 | **Total**                                 |                                                                           | **/20**    |
 
