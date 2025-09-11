@@ -10,7 +10,7 @@ frog_img = pygame.transform.scale(frog_img, (FROG_SIZE, FROG_SIZE))
 # 
 # Vous devez remplacer les valeurs des clés "x" et "y", de sorte à ce que
 # la grenouille apparaisse au centre de la première voie de pelouse (en bas de l’écran).
-# Utilisez les constantes SCREEN_WIDTH, SCREEN_HEIGHT et FROG_SIZE pour faire le calcul.
+# Utilisez les constantes SCREEN_WIDTH, SCREEN_HEIGHT, LANE_HEIGHT et FROG_SIZE pour faire le calcul.
 
 frog_dict = {
     "x": 1000,

@@ -113,7 +113,7 @@ frog_dict = {
 ```
 Ce dictionnaire est déjà défini pour vous. Cependant, la position de la grenouille (définie par les clés `x` et `y`), n'est pas la bonne. La première étape du projet est de modifier les valeurs de ces clés de manière à ce que la grenouille apparaisse **au centre de la première voie de pelouse, en bas de l'écran**.
 
-Pour ce faire,  **vous devez utiliser les variables `SCREEN_WIDTH`, `SCREEN_HEIGHT` et `FROG_SIZE`**, déjà définies dans le fichier `config.py`. 
+Pour ce faire,  **vous devez utiliser les variables `SCREEN_WIDTH`, `SCREEN_HEIGHT`, `LANE_HEIGHT` et `FROG_SIZE`**, déjà définies dans le fichier `config.py`. 
 
 À la fin de cette première partie, la grenouille devrait apparaître au centre de la première pelouse lorsqu'on démarre le jeu (exécute `main.py`). 
 
