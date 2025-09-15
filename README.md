@@ -1,7 +1,7 @@
 # Projet 1 - INF1007 Automne 2025
 
 ## Directives
-:alarm_clock: Date de remise : 19 octobre 2025 à minuit
+:alarm_clock: Date de remise : **19 octobre 2025 à 23:59**
 
 :mailbox_with_mail: À remettre sur Moodle (voir les directives en bas de la page)
 
