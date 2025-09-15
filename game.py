@@ -35,12 +35,13 @@ def handle_input(event):
 
 # ======================== PARTIE 2.3 ===========================
 #
-# TODO : Complétez la fonction `check_collision`, qui détecte les collisions entre la grenouille
+# TODO : Compléter la fonction `check_collision`, qui détecte les collisions entre la grenouille
 # et les voitures. 
 # 
 # Étapes à suivre : 
 # - Créer un rectangle (`pygame.Rect`) représentant la grenouille. 
-# - Parcourir toutes les voies de type "car" dans la liste "lanes".
+# - Parcourir toutes les voies dans la liste "LANES".
+# - Vérifier si la voie est de type "road".
 # - Pour chaque voiture dans une voie : 
 #     - Créer un rectangle basé sur l'image et la position de la voiture
 #     - Vérifier si ce rectangle entre en collision avec celui de la grenouille, à l'aide

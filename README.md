@@ -240,7 +240,7 @@ Vous allez maintenant implémenter une fonction de détection de collisions entr
 
 Pour cette partie, vous devez compléter la fonction `check_collision()` dans le fichier `game.py`. Cette fonction doit :
 - [Créer un rectangle pygame (`pygame.Rect`)](https://www.pygame.org/docs/ref/rect.html) représentant la grenouille.
-- Parcourir toutes les voies de type `car` dans la liste `LANES`.
+- Parcourir toutes les voies dans la liste `LANES`.
 - Vérifier s'il s'agit d'une voie de type `road`
 - Pour chaque voiture dans la voie :
      - Créer un rectangle pygame (`pygame.Rect`) basé sur l'image et la position de la voiture.
