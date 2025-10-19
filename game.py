@@ -102,7 +102,7 @@ def handle_logs():
     frog_dict['on_log'] = False
     frog_dict['log_speed'] = 0
 
-    rectangle_grenouille = pygame.Rect(frog_dict['x'], frog_dict['y'], FROG_SIZE, FROG_SIZE)
+    rectangle_grenouille = pygame.Rect(frog_dict['x'], frog_dict['y'], FROG_SIZE + 5, FROG_SIZE + 5)
     from window import logs_dict
     for voie in LANES:
         if voie['type'] == 'river' :
