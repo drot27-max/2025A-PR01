@@ -64,12 +64,18 @@ def handle_input(event):
 # 
 # Voir le README.md pour des détails supplémentaires sur les fonctions pygame. 
 
+from config import CARS_SIZE
+
 def check_collision():
+    rectangle_grenouille = pygame.Rect(frog_dict['x'], frog_dict['y'], FROG_SIZE, FROG_SIZE )
+    from window import cars_dict 
+    for voie in LANES :
+        if voie['type'] == 'road' :
+            for car in voie['entities']:
+                rectangle_voiture = pygame.Rect(car['x'], car['y'], CARS_SIZE[0], CARS_SIZE[1])
 
-
-
-
-
+                if rectangle_grenouille.colliderect(rectangle_voiture):
+                    return True
 
     return False
 
@@ -93,11 +99,21 @@ def check_collision():
 # - Si aucune bûche n'est en contact avec la grenouille, la variable frog["log_speed"] doit être remise à 0.
 
 def handle_logs():
+    frog_dict['on_log'] = False
+    frog_dict['log_speed'] = 0
 
+    rectangle_grenouille = pygame.Rect(frog_dict['x'], frog_dict['y'], FROG_SIZE, FROG_SIZE)
+    from window import logs_dict
+    for voie in LANES:
+        if voie['type'] == 'river' :
+            for log in voie['entities'] :
+                rectangle_buche = pygame.Rect(log['x'], log['y'], log['width'], log['height'])
 
-
-
-
+                if rectangle_grenouille.colliderect(rectangle_buche):
+                    frog_dict['on_log'] = True
+                    frog_dict['log_speed'] += voie['speed']
+                    frog_dict['x'] = log['x']
+                    return
     return
 
 # =================================================================

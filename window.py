@@ -41,8 +41,8 @@ def add_road_lanes():
 
         vitesse = 0
         if direction == 'droite' :
-            vitesse = (random.choice([1,1.75,2.5]))
-        else : vitesse = -(random.choice([1,1.75,2.5]))
+            vitesse = (random.choice([1,1.5,2]))
+        else : vitesse = -(random.choice([1,1.5,2]))
 
         cars = []
         for j in range(3):
@@ -65,21 +65,6 @@ def add_road_lanes():
             "y": position,
             "entities": cars
             })
-
-
-
-    
-
-        
-
-
-
-        
-
-
-
-
-
 
     return
 
@@ -115,6 +100,45 @@ def add_grass_lane():
 # - Ajoutez la voie complète à la structure qui gère l’ensemble des voies (lanes). 
 
 def add_river_lanes():
+    position_base = int(SCREEN_HEIGHT) - 7*int(LANE_HEIGHT)
+
+    for i in range(4):
+        position = position_base - i*int(LANE_HEIGHT)
+        direction = 'droite' if i % 2 == 0 else 'gauche'
+
+        import random
+
+        vitesse = 0
+        if direction == 'droite' :
+            vitesse = (random.choice([1,1.5,2]))
+        else : vitesse = -(random.choice([1,1.5,2]))
+
+        logs = []
+        for j in range(3):
+            log = {
+                'width' :  random.choice([LOG_SIZES['short'][0], LOG_SIZES['medium'][0], LOG_SIZES['long'][0]]),
+                'height': LOG_SIZES['short'][1],
+                'x': j * 250 + int(random.randint(300,400)),
+                'y': position + (4/7)*int(LOG_SIZES['short'][1]) ,
+                'image': ''
+            }
+            if log['width'] == LOG_SIZES['short'][0] : 
+                log['image'] = logs_dict['short']
+            if log['width'] == LOG_SIZES['medium'][0] : 
+                log['image'] = logs_dict['medium']
+            if log['width'] == LOG_SIZES['long'][0] : 
+                log['image'] = logs_dict['long']
+            
+
+            logs.append(log)
+
+            LANES.append({
+            "type": 'river',
+            "speed": int(vitesse),
+            "y": position,
+            "entities": logs
+            })
+
     
 
 
