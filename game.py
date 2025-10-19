@@ -21,8 +21,22 @@ def move_entities():
 # TODO : Ajoutez une contrainte pour empêcher la grenouille de sortir de l'écran.
 # Les coordonnées "x" et "y" doivent rester entre les bornes de la fenêtre de jeu.
 
-def handle_input(event): 
-
+def handle_input(event):
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_LEFT:
+            frog_dict['x'] -= frog_dict['speed']
+        if event.key == pygame.K_RIGHT:
+            frog_dict['x'] += frog_dict['speed']
+        if event.key == pygame.K_UP:
+            frog_dict['y'] -= frog_dict['speed']
+        if event.key == pygame.K_DOWN:
+            frog_dict['y'] += frog_dict['speed']
+            
+        frog_dict['x'] = max(0, min(frog_dict['x'], int(SCREEN_WIDTH) - int(FROG_SIZE)))
+        frog_dict['y'] = max(0, min(frog_dict['y'], int(SCREEN_HEIGHT) - 1.2*int(FROG_SIZE))) 
+        # 1.2*int(FROG_SIZE) choisi puisque LANE_HEIGHT = 70 pixels et que FROG_SIZE = 50 pixel, donc LANE_HEIGHT = 1.4*FROG_SIZE
+        # Puisque LANE_HEIGHT = 1.4*FROG_SIZE, il y a un mouvement potentiel de 0.2*FROG_SIZE vers le bas si la limite minimale utilise seulement FROG_SIZE
+        # J'ai donc choisi 1.2*FROG_SIZE a la place pour empecher ce mouvement possible vers le bas.
 
 
 

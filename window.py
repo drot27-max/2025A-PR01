@@ -31,6 +31,51 @@ background_img = pygame.transform.scale(background_img, (SCREEN_WIDTH, SCREEN_HE
 # - Ajoutez la voie complète à la structure qui gère l’ensemble des voies (lanes).
 
 def add_road_lanes():
+    position_base = int(SCREEN_HEIGHT) - int(LANE_HEIGHT)
+
+    for i in range(4):
+        position = position_base - (i) * int(LANE_HEIGHT)
+        direction = 'droite' if i % 2 == 0 else 'gauche'
+
+        import random
+
+        vitesse = 0
+        if direction == 'droite' :
+            vitesse = (random.choice([1,1.75,2.5]))
+        else : vitesse = -(random.choice([1,1.75,2.5]))
+
+        cars = []
+        for j in range(3):
+            car = {
+                'width' :  CARS_SIZE,
+                'height': CARS_SIZE,
+                'x': j * 250 + int(random.randint(300,400)),
+                'y': position - 1.2 * int(CARS_SIZE[1]) ,
+                'image': ''
+            }
+            if i % 2 == 0 : 
+                car['image'] = random.choice(cars_dict['right'])
+            else : car['image'] = random.choice(cars_dict['left'])
+
+            cars.append(car)
+
+            LANES.append({
+            "type": 'road',
+            "speed": vitesse,
+            "y": position,
+            "entities": cars
+            })
+
+
+
+    
+
+        
+
+
+
+        
+
 
 
 

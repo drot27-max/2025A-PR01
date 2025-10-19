@@ -13,8 +13,8 @@ frog_img = pygame.transform.scale(frog_img, (FROG_SIZE, FROG_SIZE))
 # Utilisez les constantes SCREEN_WIDTH, SCREEN_HEIGHT, LANE_HEIGHT et FROG_SIZE pour faire le calcul.
 
 frog_dict = {
-    "x": 1000,
-    "y": 1000,
+    "x": int(SCREEN_WIDTH)/2 - int(FROG_SIZE)/2,
+    "y": int(SCREEN_HEIGHT) - int(LANE_HEIGHT) +int(FROG_SIZE)/5, 
     "size": FROG_SIZE,
     "speed": LANE_HEIGHT,
     "on_log": False, # Si la grenouille se retrouve sur la bûche (True) ou non (False)
